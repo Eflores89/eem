@@ -20,9 +20,10 @@
 #'
 #' @export
 #' @examples
+#' library(ggplot2)
 #' dsamp <- diamonds[sample(nrow(diamonds), 1000), ]
 #' q <- (qplot(carat, price, data=dsamp, colour=clarity)
-#'       + ggtitle("Diamonds Are Forever"))
+#'      + labs(title = "Diamonds Are Forever"))
 #' q + theme_eem()
 #'
 
@@ -34,8 +35,8 @@ theme_eem <- function(font_size = 12,
   theme(
     # --------------------- colores de gráfica en general
     plot.background       = element_rect(colour = "gray", 
-                                         fill   =  "#fdf5c9"), #plot area (grande)
-    panel.background      = element_rect(fill="#fdf5c9"), #panel (chart area)
+                                         fill   =  "#d8aaaa"), #plot area (grande)
+    panel.background      = element_rect(fill="#d8aaaa"), #panel (chart area)
     
     # --------------------- titulos
     title                 = element_text(colour = "red", 
