@@ -35,13 +35,14 @@ theme_eem <- function(font_size = 12,
   theme(
     # --------------------- colores de gráfica en general
     plot.background       = element_rect(colour = "gray", 
-                                         fill   =  "#d8aaaa"), #plot area (grande)
-    panel.background      = element_rect(fill="#d8aaaa"), #panel (chart area)
+                                         fill   =  "white"), #plot area (grande)
+    panel.background      = element_rect(fill   = "white"), #panel (chart area)
+    panel.grid            = element_line(colour   = "#e1b95b"),
     
     # --------------------- titulos
     title                 = element_text(colour = "red", 
-                                         size = rel(1.5)),
-      plot.title          = element_text(colour = "orange"),
+                                         size   = rel(1.5)),
+      plot.title          = element_text(colour = "#780D00"),
       axis.title.x        = element_text(colour = "blue"),
       axis.title.y        = element_text(),
     
@@ -49,11 +50,11 @@ theme_eem <- function(font_size = 12,
     axis.text             = element_text(colour = "green"),
       axis.text.x         = element_text(angle  = 90),
       axis.text.y         = element_text(colour = "pink"),
-    axis.ticks            = element_line(size = 2),
+    axis.ticks            = element_line(size   = 2),
     
     # --------------------- leyenda
     legend.background     = element_rect(colour = "black",
-                                         fill = "#ffcb85"),
+                                         fill   = "#ffcb85"),
     legend.position       = if(legend_bottom){"bottom"} else {"right"}, #posicion de leyenda
     legend.title          = if(no_legendname){element_blank()} else {}, #quitar el titulo
     legend.text           = element_text(colour ="white"),
@@ -89,7 +90,8 @@ scales_eem<-function()
   
   if(n<20)
     {# cuando es 19 o menos, pintamos de manera manual
-    scale_colour_manual(values = brewer.pal(n,"Set1")) 
+    scale_colour_manual(values = c("#A84A44","#E47D04","#D8A19E","#ae8b38",
+                                   "#4d7c28","#38b6a6","#2080c7","#ce726e")) 
     } else {
     # cuando es mayor a 19, pintamos con gradientes
     scale_color_gradient(low="darkkhaki", high="darkgreen")
