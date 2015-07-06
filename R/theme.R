@@ -21,6 +21,7 @@
 #' @export
 #' @examples
 #' library(ggplot2)
+#' library(eem)
 #' dsamp <- diamonds[sample(nrow(diamonds), 1000), ]
 #' q <- (qplot(carat, price, data=dsamp, colour=clarity)
 #'      + labs(title = "Diamonds Are Forever"))
