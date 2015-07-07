@@ -78,9 +78,9 @@ factura<-function(file,extend=FALSE,spanish=FALSE)
     } else {descr<-as.list(d$Conceptos$Concepto["descripcion"])$descripcion }
     
     #add address (emision)
-      #street
+      
       if (is.null(as.list(d$Emisor$DomicilioFiscal)))
-      {
+      { #no data def
         df_a<-cbind.data.frame(
           street = "No data",
           postalcode = "No data",
@@ -94,49 +94,47 @@ factura<-function(file,extend=FALSE,spanish=FALSE)
         #make list
         l<-as.list(d$Emisor$DomicilioFiscal)
         df_a<-cbind.data.frame(
-          street = l$calle,
-          postalcode = l$codigoPostal,
-          neighborhood = l$colonia,
-          state = l$estado,
-          municipality = l$municipio,
-          number = l$noExterior,
-          country = l$pais
+          street = if(is.null(l$calle)) {"No data"} else {l$calle},
+          postalcode = if(is.null(l$codigoPostal)){"No data"} else {l$codigoPostal},
+          neighborhood = if(is.null(l$colonia)){"No data"} else {l$colonia},
+          state = if(is.null(l$estado)){"No data"} else {l$estado},
+          municipality = if(is.null(l$municipio)){"No data"} else {l$municipio},
+          number = if(is.null(l$noExterior)){"No data"} else {l$noExterior},
+          country = if(is.null(l$pais)){"No data"} else {l$pais}
         )
       }
     #change names in data.frame 
     
     #add address (receiver)
-    
     if (is.null(as.list(d$Receptor$Domicilio)))
-    {
-      df_a2<-cbind.data.frame(
-        street = "No data",
-        postalcode = "No data",
-        neighborhood = "No data",
-        state = "No data",
-        municipality = "No data",
-        number = "No data",
-        country = "No data"
+    { #no data def
+      df_a<-cbind.data.frame(
+          street = "No data",
+          postalcode = "No data",
+          neighborhood = "No data",
+          state = "No data",
+          municipality = "No data",
+          number = "No data",
+          country = "No data"
+        )
       )
     } else {
       #make list
-      l2<-as.list(d$Emisor$DomicilioFiscal)
+      l2<-as.list(d$Receptor$Domicilio))
       df_a2<-cbind.data.frame(
-        street = l$calle,
-        postalcode = l$codigoPostal,
-        neighborhood = l$colonia,
-        state = l$estado,
-        municipality = l$municipio,
-        number = l$noExterior,
-        country = l$pais
+          street = if(is.null(l2$calle)) {"No data"} else {l2$calle},
+          postalcode = if(is.null(l2$codigoPostal)){"No data"} else {l2$codigoPostal},
+          neighborhood = if(is.null(l2$colonia)){"No data"} else {l2$colonia},
+          state = if(is.null(l2$estado)){"No data"} else {l2$estado},
+          municipality = if(is.null(l2$municipio)){"No data"} else {l2$municipio},
+          number = if(is.null(l2$noExterior)){"No data"} else {l2$noExterior},
+          country = if(is.null(l2$pais)){"No data"} else {l2$pais}
       )
     }
-    
+    #change names in data.frame 
   
   #join all in new data.frame
-    dfm2<-cbind.data.frame(
-      
-    )
+    dfm2<-cbind.data.frame(df_a,df_a2)
     
     #export all
     return(dfm2)
