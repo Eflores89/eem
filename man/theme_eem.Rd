@@ -4,7 +4,7 @@
 \alias{theme_eem}
 \title{ggplot color theme for enelmargen.org}
 \usage{
-theme_eem(font_size = 12, base_family = "Verdana", legend_bottom = TRUE,
+theme_eem(font_size = 20, base_family = "Verdana", legend_bottom = TRUE,
   no_legendname = TRUE)
 }
 \arguments{
@@ -33,9 +33,11 @@ you have access to this font, you can use it with the
 \pkg{extrafont} package. "Verdana" is a good substitute.
 }
 \examples{
+library(ggplot2)
+library(eem)
 dsamp <- diamonds[sample(nrow(diamonds), 1000), ]
 q <- (qplot(carat, price, data=dsamp, colour=clarity)
-      + ggtitle("Diamonds Are Forever"))
+     + labs(title = "Diamonds Are Forever"))
 q + theme_eem()
 }
 

@@ -16,6 +16,6 @@ Style colors used in \emph{www.enelmargen.org} as of july-2015.
 dsamp <- diamonds[sample(nrow(diamonds), 1000), ]
 q <- (qplot(carat, price, data=dsamp, colour=clarity)
       + ggtitle("Diamonds Are Forever"))
-q + theme_eem()
+q + scales_eem()
 }
 

@@ -39,7 +39,8 @@ factura<-function(file,extend=FALSE,spanish=FALSE)
       warning=function(warn) {print(0)},
       error=function(err){print(0)},
       finally={
-      #no error}
+      #no error
+      }
         ) 
   ## Date
   date<-as.Date(d$.attrs["fecha"][1])
@@ -117,10 +118,9 @@ factura<-function(file,extend=FALSE,spanish=FALSE)
           number = "No data",
           country = "No data"
         )
-      )
     } else {
       #make list
-      l2<-as.list(d$Receptor$Domicilio))
+      l2<-as.list(d$Receptor$Domicilio)
       df_a2<-cbind.data.frame(
           street = if(is.null(l2$calle)) {"No data"} else {l2$calle},
           postalcode = if(is.null(l2$codigoPostal)){"No data"} else {l2$codigoPostal},
