@@ -4,13 +4,16 @@
 \alias{scales_eem}
 \title{ggplot color scales for enelmargen.org}
 \usage{
-scales_eem()
+scales_eem(esniveles)
 }
 \value{
 An object of class \code{\link{theme}}.
 }
 \description{
 Style colors used in \emph{www.enelmargen.org} as of july-2015.
+}
+\note{
+not ready
 }
 \examples{
 dsamp <- diamonds[sample(nrow(diamonds), 1000), ]
