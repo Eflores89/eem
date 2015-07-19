@@ -73,7 +73,7 @@ theme_eem <- function(font_size = 20,
 #' Style colors used in \emph{www.enelmargen.org} as of july-2015.
 #'
 #' @return An object of class \code{\link{theme}}.
-#'
+#' @note not ready
 #' @export
 #' @examples
 #' dsamp <- diamonds[sample(nrow(diamonds), 1000), ]
@@ -82,8 +82,8 @@ theme_eem <- function(font_size = 20,
 #' q + scales_eem()
 #'
 #'
-scales_eem<-function()
-{ ### 
+scales_eem<-function(esniveles)
+{ ### not run 
   if(esniveles){
     n<-length(levels(data))
     } else {
