@@ -72,31 +72,50 @@ theme_eem <- function(font_size = 20,
 #'
 #' Style colors used in \emph{www.enelmargen.org} as of july-2015.
 #'
-#' @return An object of class \code{\link{theme}}.
-#' @note not ready
 #' @export
 #' @examples
 #' dsamp <- diamonds[sample(nrow(diamonds), 1000), ]
 #' q <- (qplot(carat, price, data=dsamp, colour=clarity)
 #'       + ggtitle("Diamonds Are Forever"))
-#' q + scales_eem()
+#' q + scale_colour_eem(20)
 #'
 #'
-scales_eem<-function(esniveles)
-{ ### not run 
-  if(esniveles){
-    n<-length(levels(data))
-    } else {
-      n<-largocomosea
-    }
-  
-  if(n<20)
-    {# cuando es 19 o menos, pintamos de manera manual
-    scale_colour_manual(values = c("#A84A44","#E47D04","#D8A19E","#ae8b38",
-                                   "#4d7c28","#38b6a6","#2080c7","#ce726e")) 
-    } else {
-    # cuando es mayor a 19, pintamos con gradientes
-    scale_color_gradient(low="darkkhaki", high="darkgreen")
-    }
+scale_colour_eem<-function(levels)
+{ 
+  colors<-c("#A84A44","#E47D04","#D8A19E","#ae8b38","#4d7c28",
+            "#38b6a6","#2080c7","#943834","#155685","#157d85",
+            "#731585","#848515","#d06347","#d0ca47","#d04785",
+            "#a19c9b","#b5bcbf","#62686b","#021118","#daf3ff")
+  if(levels<21){
+    use<-colors[1:levels]
+    scale_colour_manual(values = use)
+  } else {
+    scale_color_gradient(low="#ffe7e5", high="#9a2922", na.value = "#bdbdbd")
+  }
+}
 
+#' ggplot color scales for enelmargen.org
+#'
+#' Style colors used in \emph{www.enelmargen.org} as of july-2015.
+#'
+#' @export
+#' @examples
+#' dsamp <- diamonds[sample(nrow(diamonds), 1000), ]
+#' q <- (qplot(carat, price, data=dsamp, colour=clarity)
+#'       + ggtitle("Diamonds Are Forever"))
+#' q + scale_fill_eem(20)
+#'
+#'
+scale_fill_eem<-function(levels)
+{ 
+  colors<-c("#A84A44","#E47D04","#D8A19E","#ae8b38","#4d7c28",
+            "#38b6a6","#2080c7","#943834","#155685","#157d85",
+            "#731585","#848515","#d06347","#d0ca47","#d04785",
+            "#a19c9b","#b5bcbf","#62686b","#021118","#daf3ff")
+  if(levels<21){
+    use<-colors[1:levels]
+    scale_fill_manual(values = use)
+  } else {
+    scale_fill_gradient(low="#ffe7e5", high="#9a2922", na.value = "#bdbdbd")
+  }
 }
