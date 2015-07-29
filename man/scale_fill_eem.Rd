@@ -6,6 +6,9 @@
 \usage{
 scale_fill_eem(levels)
 }
+\arguments{
+\item{levels}{Number of diferente levels in a factor. If continous = use any number over 20.}
+}
 \description{
 Style colors used in \emph{www.enelmargen.org} as of july-2015.
 }

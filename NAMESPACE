@@ -3,3 +3,4 @@
 export(scale_colour_eem)
 export(scale_fill_eem)
 export(theme_eem)
+export(theme_eem_white)
