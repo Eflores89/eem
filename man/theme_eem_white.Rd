@@ -24,6 +24,7 @@ Style plots used in \emph{www.enelmargen.org} as of july-2015.
 background theme.
 \code{theme_eem_white} implements a variant with a white
 panel and background.
+\code{theme_eem_pdf} implements standard coloring theme optimized for use in rmarkdown to pdf documents.
 }
 \examples{
 library(ggplot2)
