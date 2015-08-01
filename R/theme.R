@@ -205,41 +205,38 @@ theme_eem_white <- function(font_size = 20,
 #'      + labs(title = "Diamonds Are Forever"))
 #' q + theme_eem_pdf()
 #'
-
 theme_eem_pdf <- function(font_size = 10, 
-                      base_family = "Verdana", 
-                      legend_bottom = TRUE,
-                      no_legendname = TRUE) 
+                          base_family = "Verdana", 
+                          legend_right = TRUE,
+                          no_legendname = TRUE) 
 {
   theme(
     # --------------------- colores de gráfica en general
-    plot.background       = element_rect(colour = "gray", 
-                                         fill   =  "#f2f1e8"), #plot area (grande)
-    panel.background      = element_rect(fill   = "#F2F0E8"), #panel (chart area)
+    plot.background       = element_rect(colour = "white", 
+                                         fill   =  "white"), #plot area (grande)
+    panel.background      = element_rect(fill   = "white"), #panel (chart area)
     panel.grid            = element_line(colour   = "#E5D770"), ##e1b95b,#E5D770
     
     # --------------------- titulos
     title                 = element_text(colour = "black", 
-                                         size   = rel(1.5)),
-    plot.title          = element_text(colour = "black"),
-    axis.title.x        = element_text(colour = "#BDBDBD"),
-    axis.title.y        = element_text(colour = "#BDBDBD"),
+                                         size   = rel(1)),
+    plot.title          = element_text(colour = "black",
+                                       size = rel(0.8)),
+    axis.title.x        = element_text(colour = "black"),
+    axis.title.y        = element_text(colour = "black"),
     
     # --------------------- ejes (menos titulos)
-    axis.text             = element_text(colour = "#E5D770"),
+    axis.text             = element_text(colour = "gray"),
     axis.text.x         = element_text(angle  = 90,
-                                       colour = "black"),
-    axis.text.y         = element_text(colour = "black"),
+                                       colour = "gray"),
+    axis.text.y         = element_text(colour = "gray"),
     axis.ticks            = element_line(size   = 1,
-                                         colour  = "white",
+                                         colour  = "gray",
                                          linetype = 3),
-    #axis.ticks.length     = 10, #requiere unit() con grid
-    
-    
     # --------------------- leyenda
     legend.background     = element_rect(colour = "white",
                                          fill   = "#F2F0E8"),
-    legend.position       = if(legend_bottom){"bottom"} else {"right"}, #posicion de leyenda
+    legend.position       = if(legend_right){"right"} else {"bottom"}, #posicion de leyenda
     legend.title          = if(no_legendname){element_blank()} else {}, #quitar el titulo
     legend.text           = element_text(colour ="black"),
     legend.key            = element_rect(colour = "white") #fill de la leyenda
