@@ -6,7 +6,7 @@
 #' background theme.
 #' \code{theme_eem_white} implements a variant with a white
 #' panel and background.
-#'
+#' \code{theme_eem_pdf} implements standard coloring theme optimized for use in rmarkdown to pdf documents.
 #'
 #' @param font_size font size. Default = 20.
 #' @param base_family base family. Default = Verdana.
@@ -123,7 +123,7 @@ scale_fill_eem<-function(levels)
 #' background theme.
 #' \code{theme_eem_white} implements a variant with a white
 #' panel and background.
-#'
+#' \code{theme_eem_pdf} implements standard coloring theme optimized for use in rmarkdown to pdf documents.
 #'
 #' @param font_size font size. Default = 20.
 #' @param base_family base family. Default = Verdana.
@@ -173,6 +173,72 @@ theme_eem_white <- function(font_size = 20,
     # --------------------- leyenda
     legend.background     = element_rect(colour = "#F2F0E8",
                                          fill   = "white"),
+    legend.position       = if(legend_bottom){"bottom"} else {"right"}, #posicion de leyenda
+    legend.title          = if(no_legendname){element_blank()} else {}, #quitar el titulo
+    legend.text           = element_text(colour ="black"),
+    legend.key            = element_rect(colour = "white") #fill de la leyenda
+  )
+}
+
+#' ggplot color theme for enelmargen.org
+#'
+#' Style plots used in \emph{www.enelmargen.org} as of july-2015.
+#'
+#' \code{theme_eem} implements the standard redish-brown
+#' background theme.
+#' \code{theme_eem_white} implements a variant with a white
+#' panel and background.
+#' \code{theme_eem_pdf} implements standard coloring theme optimized for use in rmarkdown to pdf documents.
+#'
+#'
+#' @param font_size font size. Default = 10.
+#' @param base_family base family. Default = Verdana.
+#' @param legend_bottom will the legend be at the bottom? Default = TRUE
+#' @param no_legendname will the legend have no title? Default = TRUE
+#'
+#' @export
+#' @examples
+#' library(ggplot2)
+#' library(eem)
+#' dsamp <- diamonds[sample(nrow(diamonds), 1000), ]
+#' q <- (qplot(carat, price, data=dsamp, colour=clarity)
+#'      + labs(title = "Diamonds Are Forever"))
+#' q + theme_eem_pdf()
+#'
+
+theme_eem_pdf <- function(font_size = 10, 
+                      base_family = "Verdana", 
+                      legend_bottom = TRUE,
+                      no_legendname = TRUE) 
+{
+  theme(
+    # --------------------- colores de gráfica en general
+    plot.background       = element_rect(colour = "gray", 
+                                         fill   =  "#f2f1e8"), #plot area (grande)
+    panel.background      = element_rect(fill   = "#F2F0E8"), #panel (chart area)
+    panel.grid            = element_line(colour   = "#E5D770"), ##e1b95b,#E5D770
+    
+    # --------------------- titulos
+    title                 = element_text(colour = "black", 
+                                         size   = rel(1.5)),
+    plot.title          = element_text(colour = "black"),
+    axis.title.x        = element_text(colour = "#BDBDBD"),
+    axis.title.y        = element_text(colour = "#BDBDBD"),
+    
+    # --------------------- ejes (menos titulos)
+    axis.text             = element_text(colour = "#E5D770"),
+    axis.text.x         = element_text(angle  = 90,
+                                       colour = "black"),
+    axis.text.y         = element_text(colour = "black"),
+    axis.ticks            = element_line(size   = 1,
+                                         colour  = "white",
+                                         linetype = 3),
+    #axis.ticks.length     = 10, #requiere unit() con grid
+    
+    
+    # --------------------- leyenda
+    legend.background     = element_rect(colour = "white",
+                                         fill   = "#F2F0E8"),
     legend.position       = if(legend_bottom){"bottom"} else {"right"}, #posicion de leyenda
     legend.title          = if(no_legendname){element_blank()} else {}, #quitar el titulo
     legend.text           = element_text(colour ="black"),
