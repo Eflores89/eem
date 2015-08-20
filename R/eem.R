@@ -26,3 +26,17 @@ order_axis<-function(data, axis, column)
   within(df, 
          do.call("<-",list(paste0(as.character(arguments$axis),"_o"), a)))
 }
+#' Obtain a sample of a dataframe
+#'
+#' Fast wrapper to extract a sample (with no replacement) of n rows from a data.frame
+#' @param data data frame
+#' @param n number of rows desired
+#' 
+#' @export
+#' @examples
+#' small <- sample_df(largedata, 500)
+sample_df<-function(data, n)
+{
+new <- data[base::sample(nrow(data), n, FALSE), ]
+return(new)
+}
