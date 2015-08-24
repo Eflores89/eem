@@ -4,7 +4,7 @@ These are collections of graph themes for www.enelmargen.org and project evaluat
 ___________________
 ### Themes & Colors
 #### Themes
-`theme_eem()` Produces a consistent theme for ggplot2 graphs (used in www.enelmargen.org sin july-2015).
+`theme_eem()` Produces a consistent theme for ggplot2 graphs (used in www.enelmargen.org since july-2015).
 `theme_eem_white()` Produces a consistent theme for ggplot2 graphs, similar to `theme_eem()`, but with a white background. 
 
 #### Colors
