@@ -31,12 +31,13 @@ order_axis<-function(data, axis, column)
 #' Fast wrapper to extract a sample (with no replacement) of n rows from a data.frame
 #' @param data data frame
 #' @param n number of rows desired
+#' @param bagging with replacement? TRUE for bagging
 #' 
 #' @export
 #' @examples
 #' small <- sample_df(largedata, 500)
-sample_df<-function(data, n)
+sample_df<-function(data, n, bagging = FALSE)
 {
-new <- data[base::sample(nrow(data), n, FALSE), ]
+new <- data[base::sample(nrow(data), n, bagging = FALSE), ]
 return(new)
 }
