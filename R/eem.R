@@ -41,3 +41,22 @@ sample_df<-function(data, n, bagging = FALSE)
 new <- data[base::sample(nrow(data), n, replacement = bagging), ]
 return(new)
 }
+#' Split a df into random sets
+#'
+#' Fast wrapper to split a data frame into random training and test sets
+#' @param data data frame
+#' @param p percent desired in training set (test will be 1-p)
+#' @notes returns list with two data frames
+#' @export
+#' @examples
+#' sets <- split_df(largedata, 0.75)
+
+split_df <- function(data, p) {
+training <- eem::sample_df(as.data.frame(data),
+                  round(length(as.data.frame(data)[,1])*p,0))
+test <- subset(as.data.frame(data), 
+                     !(row.names(data) %in% row.names(training)))
+l <- list(training=training,
+          test=test)
+return(l)
+}
