@@ -4,8 +4,8 @@ These are collections of graph themes for www.enelmargen.org and shortcut functi
 ___________________
 ### Themes & Colors
 #### Themes
-`theme_eem()` Produces a consistent theme for ggplot2 graphs (used in www.enelmargen.org since july-2015).
-`theme_eem_white()` Produces a consistent theme for ggplot2 graphs, similar to `theme_eem()`, but with a white background. 
+- `theme_eem()` Produces a consistent theme for ggplot2 graphs (used in www.enelmargen.org since july-2015).
+- `theme_eem_white()` Produces a consistent theme for ggplot2 graphs, similar to `theme_eem()`, but with a white background. 
 
 #### Colors
 `scale_colour_eem()` and `scale_fill_eem()` pass manual values to scale colors for ggplot2 objects. This allows consistency with the theme described earlier. The argument takes a value between 1 and 20 for discrete values (if there are less than 20 factors). Any number higher than 20 will use a gradient function. 
