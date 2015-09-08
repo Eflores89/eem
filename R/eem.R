@@ -61,3 +61,41 @@ l <- list(training=training,
           test=test)
 return(l)
 }
+#' Anonimize a column in a data frame
+#'
+#' Fast wrapper make a column in a data frame anonymous
+#' @param data data frame
+#' @param column number of column to make anonymous
+#' @param catalog if TRUE returns a catalog to bind the anonymous to the original data
+#' @examples
+#' df_anon <- anonymize(largedata, 1)
+#' @export
+
+function (data, column, catalog = FALSE) 
+{ vector <- data[,column]
+
+    a <- length(vector)
+    b <- length(unique(vector))
+    if (b > 1000000) {
+        stop("Too many unique values. Try diferent method")
+    }
+    else {
+    }
+    to_anon <- unique(vector)
+    new_value <- sample(x = 1:(1000000-1), 
+                        size = b, 
+                        replace = FALSE)
+    base_cat <- cbind.data.frame(to_anon, new_value)
+    vector_new <- base_cat[match(x = vector, table = base_cat$to_anon), ]
+    out <- as.vector(vector_new$new_value)
+    data[,column]<-out
+    out_df <- data
+    
+    if (catalog) {
+        l <- list(base_cat, out_df)
+        return(l)
+    }
+    else {
+        return(out_df)
+    }
+}
