@@ -71,7 +71,7 @@ return(l)
 #' df_anon <- anonymize(largedata, 1)
 #' @export
 
-function (data, column, catalog = FALSE) 
+anonymize <- function (data, column, catalog = FALSE) 
 { vector <- data[,column]
 
     a <- length(vector)
