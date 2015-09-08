@@ -1,6 +1,6 @@
 # eem (En El Margen)
-### Themes & outlines for project evaluations
-These are collections of graph themes for www.enelmargen.org and project evaluation outlines, using RMarkdown. 
+### Themes & shortcut functions for writing.
+These are collections of graph themes for www.enelmargen.org and shortcut functions for data analysis for personal projects.
 ___________________
 ### Themes & Colors
 #### Themes
