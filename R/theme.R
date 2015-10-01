@@ -242,3 +242,17 @@ theme_eem_pdf <- function(font_size = 10,
     legend.key            = element_rect(colour = "white") #fill de la leyenda
   )
 }
+
+#' color list for enelmargen.org graphs
+#'
+#' Object of type:list, to be used interactively when \code{scale_colour_eem()} fails or is unavailable as a method.
+#'
+#' @export
+#' @examples
+#' # see first color:
+#' eem_colors[1]
+#'
+eem_colors <- c("#A84A44", "#E47D04", "#D8A19E", "#ae8b38", "#4d7c28", 
+                "#38b6a6", "#2080c7", "#94127a", "#155685", "#157d85", 
+                "#731585", "#848515", "#d06347", "#d0ca47", "#d04785", 
+                "#a19c9b", "#b5bcbf", "#62686b", "#021118", "#daf3ff")
