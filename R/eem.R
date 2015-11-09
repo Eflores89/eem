@@ -4,7 +4,9 @@
 #' @param data data frame
 #' @param axis categorical axis 
 #' @param column numerical variable by which to order
-#' 
+#' @importFrom dplyr %>%
+#' @importFrom dplyr group_by
+#' @importFrom dplyr summarise
 #' @export
 #' @examples
 #' ggplot(order_axis(df, AXIS_X, COLUMN_Y), 
@@ -14,6 +16,17 @@ order_axis<-function(data, axis, column)
 {
   # for interactivity with ggplot2
   arguments <- as.list(match.call())
+  
+  #if tidy information with more than 1 column 
+  #if(length(names(data))>2)
+  #{
+   # data <- data %>% 
+    #  dplyr::group_by(eval(arguments$axis)) %>% 
+     # dplyr::summarise(newsum = sum(column))
+  #  data <- as.data.frame(data) 
+   # names(data)<-c(as.character(arguments$axis), as.character(arguments$column))
+  #} else {}
+
   col <- eval(arguments$column, data)
   ax <- eval(arguments$axis, data)
   
@@ -42,12 +55,13 @@ sample_df<-function(data, n, bagging = FALSE)
 new <- data[base::sample(nrow(data), n, replacement = bagging), ]
 return(new)
 }
+
 #' Split a df into random sets
 #'
 #' Fast wrapper to split a data frame into random training and test sets
 #' @param data data frame
 #' @param p percent desired in training set (test will be 1-p)
-#' @notes returns list with two data frames
+#' @note returns list with two data frames
 #' @export
 #' @examples
 #' sets <- split_df(largedata, 0.75)

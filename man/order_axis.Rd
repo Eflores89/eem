@@ -17,6 +17,7 @@ order_axis(data, axis, column)
 Order a categorical variable by the values in a numerical variable in ggplot
 }
 \examples{
-ggplot(order_axis(df, AXIS_X, COLUMN_Y), aes(x = AXIS_X_o, y = COLUMN_Y))
+ggplot(order_axis(df, AXIS_X, COLUMN_Y),
+       aes(x = AXIS_X_o, y = COLUMN_Y))
 }
 
