@@ -52,7 +52,7 @@ order_axis<-function(data, axis, column)
 #' small <- sample_df(largedata, 500)
 sample_df<-function(data, n, bagging = FALSE)
 {
-new <- data[base::sample(nrow(data), n, replacement = bagging), ]
+new <- data[base::sample(nrow(data), n, replace = bagging), ]
 return(new)
 }
 
