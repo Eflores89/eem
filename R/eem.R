@@ -113,3 +113,16 @@ anonymize <- function (data, column, catalog = FALSE)
         return(out_df)
     }
 }
+#' Load an RData file interactively
+#' 
+#' Nifty wrapper function to load into a named object, an RData file. Taken from \url{http://stackoverflow.com/questions/5577221/how-can-i-load-an-object-into-a-variable-name-that-i-specify-from-an-r-data-file}
+#' @params filename R object to be loaded
+#' @examples 
+#' #Notrun
+#' df <- loadRData("Data/data.RData")
+#' @export
+loadRData <- function(fileName){
+  #loads an RData file, and returns it
+  load(fileName)
+  get(ls()[ls() != "fileName"])
+}
