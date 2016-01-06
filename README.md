@@ -32,3 +32,8 @@ p<- q + theme_eem() + scale_colour_eem(20)
 plot(p)
 ```
 
+Here is are some examples of `theme_eem()` and `scale_fill_eem()`:
+
+![example of theme](http://enelmargen.org/images/posts/infmex.png)
+
+![example of theme](http://enelmargen.org/images/posts/inegiR_downloads.jpeg)
