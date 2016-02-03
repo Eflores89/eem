@@ -126,3 +126,88 @@ loadRData <- function(fileName){
   load(fileName)
   get(ls()[ls() != "fileName"])
 }
+#' Create a Calendar with ggplot2
+#'
+#' Create a calendar with ggplot2 out of a data.frame with "dates" and "counts" columns. Uses ggplot2 and lubridate.
+#' @param df data.frame with "dates" and "counts" columns.
+#' @param color_fill The color to fill date with
+#' @param only_count Show no legend (we only have pairs of 1 or 0/NA)
+#' @param title The title of the calendar
+#' @export
+#' @examples
+#' gg_cal(df)
+#'
+gg_cal <- function(df, color_fill = "grey90", only_count = TRUE, title = "Calendar") {
+    require(ggplot2)
+    require(lubridate)
+    wom <- function(date) { # week-of-month
+      first <- wday(as.Date(paste(year(date),month(date),1,sep="-")))
+      return((mday(date)+(first-2)) %/% 7+1)
+    }
+    
+    df$month <- month(df$dates)
+    df$day   <- mday(df$dates)
+    
+    rng   <- range(df$dates)
+    rng   <- as.Date(paste(year(rng),month(rng),1,sep="-"))
+    start <- rng[1]
+    end   <- rng[2]
+    month(end) <- month(end)+1
+    day(end)   <- day(end)  -1
+    
+    cal <- data.frame(dates=seq(start,end,by="day"))
+    cal$year  <- year(cal$date)
+    cal$month <- month(cal$date)
+    cal$cmonth<- month(cal$date,label=T)
+    cal$day   <- mday(cal$date)
+    cal$cdow  <- wday(cal$date,label=T)
+    cal$dow   <- wday(cal$date)
+    cal$week  <- wom(cal$date)
+    
+    cal        <- merge(cal,df[,c("dates","counts")],all.x=T)
+    
+    p <- ggplot(cal, 
+           aes(x = cdow, y = -week))+
+      geom_tile(
+        aes(fill = counts, colour = color_fill))+
+      geom_text(
+        aes(label=day),
+        size=3,
+        colour="grey20")+
+      facet_wrap( ~cmonth, ncol=3)+
+      scale_fill_gradient(
+        low = "moccasin", high = "dodgerblue", na.value="white")+
+      scale_color_manual(
+        guide = F, values = "grey50")+
+      scale_x_discrete(
+        labels = c("S","M","T","W","Th","F","S"))+
+      theme(
+        axis.text.y = element_blank(), axis.ticks.y = element_blank())+
+      theme(panel.grid = element_blank())+
+      labs(x="", y="", title = title)+
+      coord_fixed()
+    
+    if(only_count){
+      p <- p + theme(legend.position = "none")
+    }
+    
+    print(p)
+}
+#' Create a data.frame with dates in a year, to be used by gg_cal
+#'
+#' Create dates that span a year
+#' @param year a year in numeric (i.e. 2016)
+#' @export
+#' @examples
+#' # to make a year data.frame with some important dates
+#' library(dplyr)
+#' make_year(2016) %>% left_join(., data.frame("dates" = c("2016-09-09", "2016-08-28"), counts = c(1,1)))
+#' 
+#'
+make_year <- function(year){
+  start <- as.Date(paste0("01/01/",year), format = "%m/%d/%Y")
+  end <- as.Date(paste0("12/31/",year), format = "%m/%d/%Y")
+  require(lubridate)
+  d <- data.frame("dates" = seq(start, end, by="day"))
+  return(d)
+}
