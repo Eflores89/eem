@@ -113,3 +113,49 @@ anonymize <- function (data, column, catalog = FALSE)
         return(out_df)
     }
 }
+#' Interactively paint factors with discrete colors
+#'
+#' Paint categorical variables by a discrete scale
+#' @param data data frame
+#' @param column name of categorical variable
+#' @param colors string of colors
+#' @param type fill or color for discrete scale
+#' @export
+paint_factors <- function(data, 
+                          column, 
+                          colors, 
+                          type = "fill"){
+  # for interactivity
+  arguments <- as.list(match.call())
+  col <- eval(arguments$column, data)
+  a <- with(data, col)
+  a <- as.factor(a)
+  
+  # to coerce lengths of colors
+  if(length(colors)!=length(a)){
+    if(length(colors)<length(a)){
+      n <- length(a)
+      colors <- rep(colors, times = ceiling(n))
+      colors <- colors[1:n]
+    }else{
+      n <- length(a)
+      colors <- colors[1:n]
+    }
+  }else{}
+  
+  names(colors) <- levels(a)
+  
+  # export
+  require(ggplot2)
+  if(type == "fill"){
+    scale_fill_manual(name = paste0(as.character(arguments$axis)),
+                      values = colors)  
+  }else{
+    if(type == "color"|type == "colour"){
+      scale_colour_manual(name = paste0(as.character(arguments$axis)),
+                          values = colors)
+    }else{
+      stop("Type not recognized: select fill or color")
+    }
+  }
+}
