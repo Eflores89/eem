@@ -21,8 +21,6 @@
 #' q <- (qplot(carat, price, data=dsamp, colour=clarity)
 #'      + labs(title = "Diamonds Are Forever"))
 #' q + theme_eem()
-#'
-
 theme_eem <- function(font_size = 20, 
                       base_family = "Verdana", 
                       legend_bottom = TRUE,
