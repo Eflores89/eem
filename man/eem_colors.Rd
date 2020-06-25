@@ -4,7 +4,9 @@
 \name{eem_colors}
 \alias{eem_colors}
 \title{color list for enelmargen.org graphs}
-\format{An object of class \code{character} of length 20.}
+\format{
+An object of class \code{character} of length 20.
+}
 \usage{
 eem_colors
 }
@@ -17,4 +19,3 @@ eem_colors[1]
 
 }
 \keyword{datasets}
-

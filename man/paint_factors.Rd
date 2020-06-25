@@ -18,4 +18,3 @@ paint_factors(data, column, colors, type = "fill")
 \description{
 Paint categorical variables by a discrete scale
 }
-

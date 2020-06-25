@@ -4,8 +4,12 @@
 \alias{theme_eem_pdf}
 \title{ggplot color theme for enelmargen.org}
 \usage{
-theme_eem_pdf(font_size = 10, base_family = "Verdana",
-  legend_right = TRUE, no_legendname = TRUE)
+theme_eem_pdf(
+  font_size = 10,
+  base_family = "Verdana",
+  legend_right = TRUE,
+  no_legendname = TRUE
+)
 }
 \arguments{
 \item{font_size}{font size. Default = 10.}
@@ -35,4 +39,3 @@ q <- (qplot(carat, price, data=dsamp, colour=clarity)
 q + theme_eem_pdf()
 
 }
-

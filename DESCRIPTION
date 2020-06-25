@@ -7,5 +7,4 @@ Author: Eduardo Flores
 Maintainer: Eduardo Flores <eduardo@enelmargen.org>
 Description: Data visualization tools and shortcuts for EEM Blog
 License: CCO
-RoxygenNote: 5.0.1
-
+RoxygenNote: 7.1.0

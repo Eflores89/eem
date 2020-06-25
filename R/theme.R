@@ -27,7 +27,7 @@ theme_eem <- function(font_size = 20,
                       no_legendname = TRUE) 
   {
   theme(
-    # --------------------- colores de gráfica en general
+    # --------------------- colores de grafica en general
     plot.background       = element_rect(colour = "gray", 
                                          fill   =  "#f2f1e8"), #plot area (grande)
     panel.background      = element_rect(fill   = "#F2F0E8"), #panel (chart area)
@@ -144,7 +144,7 @@ theme_eem_white <- function(font_size = 20,
                       no_legendname = TRUE) 
 {
   theme(
-    # --------------------- colores de gráfica en general
+    # --------------------- colores de grafica en general
     plot.background       = element_rect(colour = "gray", 
                                          fill   =  "white"), #plot area (grande)
     panel.background      = element_rect(fill   = "white"), #panel (chart area)
@@ -209,7 +209,7 @@ theme_eem_pdf <- function(font_size = 10,
                           no_legendname = TRUE) 
 {
   theme(
-    # --------------------- colores de gráfica en general
+    # --------------------- colores de grafica en general
     plot.background       = element_rect(colour = "white", 
                                          fill   =  "white"), #plot area (grande)
     panel.background      = element_rect(fill   = "white"), #panel (chart area)

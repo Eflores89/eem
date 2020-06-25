@@ -20,4 +20,3 @@ returns list with two data frames
 \examples{
 sets <- split_df(largedata, 0.75)
 }
-

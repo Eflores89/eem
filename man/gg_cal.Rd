@@ -22,4 +22,3 @@ Create a calendar with ggplot2 out of a data.frame with "dates" and "counts" col
 gg_cal(df)
 
 }
-

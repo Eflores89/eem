@@ -4,8 +4,12 @@
 \alias{theme_eem}
 \title{ggplot color theme for enelmargen.org}
 \usage{
-theme_eem(font_size = 20, base_family = "Verdana", legend_bottom = TRUE,
-  no_legendname = TRUE)
+theme_eem(
+  font_size = 20,
+  base_family = "Verdana",
+  legend_bottom = TRUE,
+  no_legendname = TRUE
+)
 }
 \arguments{
 \item{font_size}{font size. Default = 20.}
@@ -33,6 +37,4 @@ dsamp <- diamonds[sample(nrow(diamonds), 1000), ]
 q <- (qplot(carat, price, data=dsamp, colour=clarity)
      + labs(title = "Diamonds Are Forever"))
 q + theme_eem()
-
 }
-

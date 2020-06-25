@@ -21,4 +21,3 @@ ggplot(order_axis(df, AXIS_X, COLUMN_Y),
        aes(x = AXIS_X_o, y = COLUMN_Y))
 
 }
-

@@ -19,4 +19,3 @@ Fast wrapper to extract a sample (with no replacement) of n rows from a data.fra
 \examples{
 small <- sample_df(largedata, 500)
 }
-

@@ -11,7 +11,7 @@ anonymize(data, column, catalog = FALSE)
 
 \item{column}{number of column to make anonymous}
 
-\item{catalog}{if TRUE returns a catalog to bind the anonymous to the original data}
+\item{catalog}{if TRUE returns a catalog (in a list) to bind the anonymous to the original data}
 }
 \description{
 Fast wrapper make a column in a data frame anonymous
@@ -19,4 +19,3 @@ Fast wrapper make a column in a data frame anonymous
 \examples{
 df_anon <- anonymize(largedata, 1)
 }
-

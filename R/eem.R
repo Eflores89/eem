@@ -16,16 +16,6 @@ order_axis<-function(data, axis, column)
 {
   # for interactivity with ggplot2
   arguments <- as.list(match.call())
-  
-  #if tidy information with more than 1 column 
-  #if(length(names(data))>2)
-  #{
-   # data <- data %>% 
-    #  dplyr::group_by(eval(arguments$axis)) %>% 
-     # dplyr::summarise(newsum = sum(column))
-  #  data <- as.data.frame(data) 
-   # names(data)<-c(as.character(arguments$axis), as.character(arguments$column))
-  #} else {}
 
   col <- eval(arguments$column, data)
   ax <- eval(arguments$axis, data)
@@ -80,11 +70,10 @@ return(l)
 #' Fast wrapper make a column in a data frame anonymous
 #' @param data data frame
 #' @param column number of column to make anonymous
-#' @param catalog if TRUE returns a catalog to bind the anonymous to the original data
+#' @param catalog if TRUE returns a catalog (in a list) to bind the anonymous to the original data
 #' @examples
 #' df_anon <- anonymize(largedata, 1)
 #' @export
-
 anonymize <- function (data, column, catalog = FALSE) 
 { vector <- data[,column]
 
@@ -238,48 +227,4 @@ gg_cal <- function(df, color_fill = "grey90", only_count = TRUE, title = "Calend
     }
     
     print(p)
-}
-#' Shorcut for tidy data frame
-#' 
-#' Helper function to create highchart graph from tidy datasets.
-#' @param hc A \code{highchart} \code{htmlwidget} object.
-#' @param data data.frame with data.
-#' @param categories bare column name of categories (one for every series)
-#' @param values bare column name of values
-#' 
-#' @examples 
-#' dat <- data.frame("id" = c(1,2,3,4,5,6), 
-#'        "grp" = c("A","A","B","B","C","C"),
-#'        "value" = c(10,13,9,15,11,16))
-#' 
-#' highchart() %>% 
-#'  hc_chart(type = "column") %>% 
-#'  hc_tidy_series(data = dat, categories = grp, values = value)
-#'   
-#' @export
-hc_tidy_series <- function(hc, data, categories, values, ...){
-  if("highchart" %in% class(hc)){}else{stop("hc must be highchart object")}
-  if("data.frame" %in% class(data)){}else{stop("data must be data.frame or coerse object")}
-  # make sure
-  data <- as.data.frame(data)
-  
-  arguments <- as.list(match.call())
-  cats <- eval(arguments$categories, data)
-  
-  n <- length(unique(as.character(cats)))
-  if(n>1){
-    for(i in 1:n){
-      nm <- as.character(unique(cats)[i])
-      dat <- eval(arguments$values, data)
-      dat <- dat[cats == nm]
-      
-      hc <- hc_add_serie(hc, 
-                         name = nm, 
-                         data = dat, ...)
-      
-    }
-  }else{
-    return(hc)
-  }
-  return(hc)
 }

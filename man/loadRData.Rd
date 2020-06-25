@@ -16,4 +16,3 @@ Nifty wrapper function to load into a named object, an RData file. Taken from \u
 #Notrun
 df <- loadRData("Data/data.RData")
 }
-
